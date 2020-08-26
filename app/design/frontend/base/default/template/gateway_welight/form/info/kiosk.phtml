@@ -1,0 +1,9 @@
+<?php
+$_orderId = $this->getInfo()->getOrder()->getId();
+$_kHelper = Mage::helper('gatewaywelight/kiosk');
+?>
+    <strong><?php echo $this->escapeHtml($this->getMethod()->getTitle()) ?> (welight)</strong>
+<?php if($info = $_kHelper->getInfo($_orderId)): ?>
+    <br/>
+    Referência no welight: <a href="<?php echo $_kHelper->getwelightLink($info)?>" target="_blank" title="Pesquisar no welight"><?php echo $info->getTemporaryReference();?></a>
+<?php endif; ?>

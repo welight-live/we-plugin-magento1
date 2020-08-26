@@ -1,0 +1,12 @@
+skin/frontend/base/default/welight/* skin/frontend/base/default/welight/selo/
+app/design/frontend/base/default/layout/gatewaywelight.xml app/design/frontend/base/default/layout/gatewaywelight.xml
+app/design/frontend/base/default/template/gatewaywelight/* app/design/frontend/base/default/template/gatewaywelight/
+app/design/adminhtml/base/default/layout/gatewaywelight/* app/design/adminhtml/base/default/layout/gatewaywelight/
+app/design/adminhtml/base/default/template/gatewaywelight/* app/design/adminhtml/base/default/template/gatewaywelight/
+app/locale/pt_BR/gatewaywelight.csv app/locale/pt_BR/gatewaywelight.csv
+app/etc/modules/gatewaywelight.xml app/etc/modules/gatewaywelight.xml
+app/code/community/Gateway/welight/* app/code/community/Gateway/welight/
+js/welight/welight.js js/welight/welight.js
+js/welight/card.js js/welight/card.js
+app/design/adminhtml/default/default/layout/gatewaywelight/* app/design/adminhtml/default/default/layout/gatewaywelight/
+app/design/adminhtml/default/default/template/gatewaywelight/* app/design/adminhtml/default/default/template/gatewaywelight/

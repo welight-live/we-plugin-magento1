@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <gatewaywelight>
+            <active>true</active>
+            <codePool>community</codePool>
+        </gatewaywelight>
+    </modules>
+</config>
