@@ -40,7 +40,8 @@ Use `/usr/local/bin/install-sampledata` to install sample data for Magento.
 After Docker container started, use `docker ps` to find container id of image `alexcheng/magento`, then use `docker exec` to call `install-sampledata` script.
 
 ```bash
-docker exec -it <container id> install-sampledata
+docker exec -it "$(docker-compose ps -q web)" install-sampledata
+
 ```
 
 Magento 1.9 sample data is compressed version from [Vinai/compressed-magento-sample-data](https://github.com/Vinai/compressed-magento-sample-data). Magento 1.6 uses the [official sample data](http://devdocs.magento.com/guides/m1x/ce18-ee113/ht_magento-ce-sample.data.html).
@@ -52,7 +53,28 @@ For Magento 1.7 and 1.8, the sample data from 1.6 doesn't work properly as claim
 After Docker container started, use `docker ps` to find container id of image `alexcheng/magento`, then use `docker exec` to call `install-magento` script.
 
 ```bash
-docker exec -it <container id> install-magento
+docker exec -it "$(docker-compose ps -q web)" install-magento
+
+```
+## Copy plugin into magento
+
+After magento installed, copy plugin files into magento.
+
+```bash
+docker cp js "$(docker-compose ps -q web)":/var/www/html
+docker cp app "$(docker-compose ps -q web)":/var/www/html
+docker cp skin "$(docker-compose ps -q web)":/var/www/html
+
+```
+
+## For Clean Cache
+
+After update plugin.
+
+```bash
+docker exec -it "$(docker-compose ps -q web)" bash
+php -r 'require "app/Mage.php"; Mage::app()->getCacheInstance()->flush();'
+
 ```
 
 Site oficial:
