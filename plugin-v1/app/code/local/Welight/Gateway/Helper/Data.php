@@ -340,7 +340,7 @@ class Welight_Gateway_Helper_Data extends Mage_Core_Helper_Abstract
 
         if (Mage::app()->getLayout()->getArea() == 'adminhtml') {
             $directPaymentBlock = Mage::app()->getLayout()
-                ->createBlock('Welight_Gateway/form_directpayment')
+                ->createBlock('welight_gateway/form_directpayment')
                 ->toHtml();
         }
 
@@ -371,14 +371,14 @@ class Welight_Gateway_Helper_Data extends Mage_Core_Helper_Abstract
     {
         if (Mage::getStoreConfigFlag(self::XML_PATH_JSDELIVR_ENABLED)) {
             $min = (Mage::getStoreConfigFlag(self::XML_PATH_JSDELIVR_MINIFY)) ? '.min' : '';
-            $moduleVersion = (string)Mage::getConfig()->getModuleConfig('Welight_Gateway')->version;
+            $moduleVersion = (string)Mage::getConfig()->getModuleConfig('RicardoMartins_PagSeguro')->version;
             $url
-                = 'https://cdn.jsdelivr.net/gh/r-martins/welight-Magento-Transparente@%s/js/welight/welight%s.js';
+                = 'https://cdn.jsdelivr.net/gh/r-martins/PagSeguro-Magento-Transparente@%s/js/pagseguro/pagseguro%s.js';
             $url = sprintf($url, $moduleVersion, $min);
             return $url;
         }
 
-        return Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS, $secure) . 'welight/welight.js';
+        return Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS, $secure) . 'pagseguro/pagseguro.js';
     }
 
     /**

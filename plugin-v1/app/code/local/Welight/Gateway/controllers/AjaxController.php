@@ -38,7 +38,7 @@ class Welight_Gateway_AjaxController extends Mage_Core_Controller_Front_Action
      */
     public function getSessionIdAction()
     {
-        $_helper = Mage::helper('Welight_Gateway');
+        $_helper = Mage::helper('welight_gateway');
         $sessionId = $_helper->getSessionId();
 
         $this->getResponse()->setHeader('Content-type', 'application/json', true);

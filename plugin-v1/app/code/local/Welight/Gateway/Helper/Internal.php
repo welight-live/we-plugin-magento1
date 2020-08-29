@@ -41,7 +41,7 @@ class Welight_Gateway_Helper_Internal extends Mage_Core_Helper_Abstract
         $noSID = $helper->isNoSidUrlEnabled();
 
         /** @var Welight_Gateway_Helper_Params $pHelper */
-        $pHelper = Mage::helper('Welight_Gateway/params'); //params helper - helper auxiliar de parametrização
+        $pHelper = Mage::helper('welight_gateway/params'); //params helper - helper auxiliar de parametrização
 
         $params = array(
         'email'                 => $helper->getMerchantEmail(),

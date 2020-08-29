@@ -29,7 +29,7 @@ class Welight_Gateway_Model_Recurring extends Welight_Gateway_Model_Abstract
 
     public function __construct()
     {
-        $this->_helper = Mage::helper('Welight_Gateway/recurring');
+        $this->_helper = Mage::helper('welight_gateway/recurring');
     }
 
 
@@ -86,7 +86,7 @@ class Welight_Gateway_Model_Recurring extends Welight_Gateway_Model_Abstract
             $welightStatus = (string)$currentStatus->status;
             $this->updateProfileStatus($profile, $welightStatus);
             if ($profile->getState() != $oldState) {
-                Mage::helper('Welight_Gateway/recurring')->writeLog(
+                Mage::helper('welight_gateway/recurring')->writeLog(
                     'Status do perfil recorrente ' . $profile->getId() . ' atualizado para '
                     . $profile->getState() . '.'
                 );

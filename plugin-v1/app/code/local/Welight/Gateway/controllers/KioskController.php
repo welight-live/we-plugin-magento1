@@ -22,7 +22,7 @@ class Welight_Gateway_KioskController extends Mage_Core_Controller_Front_Action
      */
     public function createOrderAction()
     {
-        $kHelper = Mage::helper('Welight_Gateway/kiosk');
+        $kHelper = Mage::helper('welight_gateway/kiosk');
         $pHelper = Mage::helper('Welight_Gateway');
         if (!$kHelper->isActive()) {
             return $this->redirectException($kHelper->__('Kiosk is not active.'));
@@ -89,7 +89,7 @@ class Welight_Gateway_KioskController extends Mage_Core_Controller_Front_Action
         );
 
         try{
-            $checkout = Mage::getModel('Welight_Gateway/abstract')->callApi($params, null, 'checkout');
+            $checkout = Mage::getModel('welight_gateway/abstract')->callApi($params, null, 'checkout');
         }catch (Exception $e) {
             return $this->redirectException($e->getMessage());
         }
@@ -102,7 +102,7 @@ class Welight_Gateway_KioskController extends Mage_Core_Controller_Front_Action
         $temporaryOrder->setCheckoutCode($checkoutCode);
         $temporaryOrder->setRedirectAfter($redirectAfter);
 
-        Mage::getModel('Welight_Gateway/kiosk')
+        Mage::getModel('welight_gateway/kiosk')
             ->setData($temporaryOrder->toArray())
             ->save();
 
@@ -116,9 +116,9 @@ class Welight_Gateway_KioskController extends Mage_Core_Controller_Front_Action
      */
     public function successAction()
     {
-        $kHelper = Mage::helper('Welight_Gateway/kiosk');
+        $kHelper = Mage::helper('welight_gateway/kiosk');
         $temporaryReference = $this->getRequest()->getParam('temporaryReference');
-        $kiosk = Mage::getModel('Welight_Gateway/kiosk')->loadByTemporaryReference($temporaryReference);
+        $kiosk = Mage::getModel('welight_gateway/kiosk')->loadByTemporaryReference($temporaryReference);
         if (!$kiosk->getId()) {
             return $this->redirectException($kHelper->__('Temporary order reference is missing or was not found.'));
         }

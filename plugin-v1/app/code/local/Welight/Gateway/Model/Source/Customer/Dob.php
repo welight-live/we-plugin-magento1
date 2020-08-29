@@ -18,7 +18,7 @@ class Welight_Gateway_Model_Source_Customer_Dob
      */
     public function toOptionArray()
     {
-        $fields = Mage::helper('Welight_Gateway/internal')->getFields('customer');
+        $fields = Mage::helper('welight_gateway/internal')->getFields('customer');
         $options = array();
         $options[] = array('value'=>'','label'=>'Solicitar ao cliente junto com dados do cartão');
 

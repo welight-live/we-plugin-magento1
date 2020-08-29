@@ -18,7 +18,7 @@ class Welight_Gateway_Model_Source_Customer_Address_Attributes
      */
     public function toOptionArray()
     {
-        $fields = Mage::helper('Welight_Gateway/internal')->getFields('customer_address');
+        $fields = Mage::helper('welight_gateway/internal')->getFields('customer_address');
         $options = array();
 
         foreach ($fields as $key => $value) {

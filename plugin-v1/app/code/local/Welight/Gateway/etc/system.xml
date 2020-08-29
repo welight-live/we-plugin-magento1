@@ -271,7 +271,7 @@
                         </jsdelivr_minify>
                     </fields>
                 </rm_welight>
-                <rm_welight_cc module="Welight_Gateway">
+                <rm_welight_cc module="welight_gateway">
                     <label>Welight - Cartão de Crédito</label>
                     <frontend_type>text</frontend_type>
                     <sort_order>111</sort_order>

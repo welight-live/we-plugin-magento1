@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<layout>
+    <Welight_Gateway_notification_index>
+        <reference name="content">
+            <block name="welight.gateway.notification" type="core/template" template="welight_gateway/notification.phtml" after="-"/>
+        </reference>
+    </Welight_Gateway_notification_index>
+    <catalog_product_view>
+        <reference name="product.info.extrahint">
+            <block type="welight_gateway/product_installments" name="welight.gateway.parcelas" template="welight_gateway/product/installments.phtml"/>
+        </reference>
+    </catalog_product_view>
+    <Welight_Gateway_test_standalonecc>
+        <reference name="root">
+            <action method="setTemplate">
+                <template>welight_gateway/tests/standalonecc.phtml</template>
+            </action>
+        </reference>
+    </Welight_Gateway_test_standalonecc>
+</layout>

@@ -48,7 +48,7 @@ class Welight_Gateway_Model_Payment_Recurring extends Welight_Gateway_Model_Recu
             return false;
         }
 
-        $helper = Mage::helper('Welight_Gateway/recurring');
+        $helper = Mage::helper('welight_gateway/recurring');
         $lastItem = $quote->getItemsCollection()->getLastItem();
         if (!$lastItem->getId()) {
             return false;
@@ -84,7 +84,7 @@ class Welight_Gateway_Model_Payment_Recurring extends Welight_Gateway_Model_Recu
         $info = $this->getInfoInstance();
 
         /** @var Welight_Gateway_Helper_Params $pHelper */
-        $pHelper = Mage::helper('Welight_Gateway/params');
+        $pHelper = Mage::helper('welight_gateway/params');
 
         $info->setAdditionalInformation('sender_hash', $pHelper->getPaymentHash('sender_hash'))
             ->setAdditionalInformation('credit_card_token', $pHelper->getPaymentHash('credit_card_token'))
@@ -130,7 +130,7 @@ class Welight_Gateway_Model_Payment_Recurring extends Welight_Gateway_Model_Recu
         $helper = Mage::helper('Welight_Gateway');
 
         /** @var Welight_Gateway_Helper_Params $pHelper */
-        $pHelper = Mage::helper('Welight_Gateway/params');
+        $pHelper = Mage::helper('welight_gateway/params');
 
         $shippingMethod = Mage::getSingleton('checkout/session')->getQuote()->getShippingAddress()->getShippingMethod();
 
@@ -227,7 +227,7 @@ class Welight_Gateway_Model_Payment_Recurring extends Welight_Gateway_Model_Recu
     {
         $profile = Mage::registry('current_recurring_profile');
 
-        $subscriptionDetails = Mage::getModel('Welight_Gateway/recurring')->getPreApprovalDetails(
+        $subscriptionDetails = Mage::getModel('welight_gateway/recurring')->getPreApprovalDetails(
             $referenceId, $profile->getAdditionalInfo('isSandbox')
         );
         if (!isset($subscriptionDetails->status)) {
@@ -267,7 +267,7 @@ class Welight_Gateway_Model_Payment_Recurring extends Welight_Gateway_Model_Recu
                 )
             );
             $profile->save();
-            Mage::getModel('Welight_Gateway/recurring')->createOrders($profile);
+            Mage::getModel('welight_gateway/recurring')->createOrders($profile);
         }
 
         $result->setAdditionalInformation(array('tracker' =>(string)$subscriptionDetails->tracker));
@@ -332,7 +332,7 @@ class Welight_Gateway_Model_Payment_Recurring extends Welight_Gateway_Model_Recu
      */
     public function createwelightPlan($profile)
     {
-        $helper = Mage::helper('Welight_Gateway/recurring');
+        $helper = Mage::helper('welight_gateway/recurring');
         $currentInfo = $profile->getAdditionalInfo();
         $currentInfo = (!is_array($currentInfo)) ? array() : $currentInfo;
         $uniqIdRef = substr(strtoupper(uniqid()), 0, 7); //reference that will be used in product name and subscription
@@ -371,15 +371,15 @@ class Welight_Gateway_Model_Payment_Recurring extends Welight_Gateway_Model_Recu
         $jsonArray = array(
             'plan' => $welightPlanCode,
             'reference' => $reference,
-            'sender' => Mage::helper('Welight_Gateway/params')->getSenderParamsJson($paymentInfo->getQuote()),
-            'paymentMethod' => Mage::helper('Welight_Gateway/params')->getPaymentParamsJson($paymentInfo),
+            'sender' => Mage::helper('welight_gateway/params')->getSenderParamsJson($paymentInfo->getQuote()),
+            'paymentMethod' => Mage::helper('welight_gateway/params')->getPaymentParamsJson($paymentInfo),
         );
 
         $body = Zend_Json::encode($jsonArray);
 
         $headers[] = 'Content-Type: application/json';
         $headers[] = 'Accept: application/vnd.welight.com.br.v1+json;charset=ISO-8859-1';
-        Mage::helper('Welight_Gateway/recurring')->writeLog('Aderindo cliente ao plano');
+        Mage::helper('welight_gateway/recurring')->writeLog('Aderindo cliente ao plano');
         $response = $this->callJsonApi($body, $headers, 'pre-approvals', true);
         $this->validateJsonResponse($response);
         return $response;

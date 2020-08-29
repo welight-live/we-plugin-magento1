@@ -22,7 +22,7 @@ class Welight_Gateway_Model_Cron
             return;
         }
 
-        $recurringModel = Mage::getModel('Welight_Gateway/recurring');
+        $recurringModel = Mage::getModel('welight_gateway/recurring');
         foreach ($subscriptionsToUpdate as $subscription) {
             $subscription->setUpdatedAt(date('Y-m-d H:i:s'))->save();
 
@@ -30,7 +30,7 @@ class Welight_Gateway_Model_Cron
                 $recurringModel->updateProfile($subscription);
                 $recurringModel->createOrders($subscription);
             } catch (Exception $e) {
-                Mage::helper('Welight_Gateway/recurring')->writeLog(
+                Mage::helper('welight_gateway/recurring')->writeLog(
                     'Falha ao atualizar assinatura ' . $subscription->getId() . ': ' . $e->getMessage()
                 );
                 continue;

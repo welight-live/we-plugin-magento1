@@ -67,7 +67,7 @@ class Welight_Gateway_Model_Payment_Cc extends Welight_Gateway_Model_Abstract
         $info = $this->getInfoInstance();
 
         /** @var Welight_Gateway_Helper_Params $pHelper */
-        $pHelper = Mage::helper('Welight_Gateway/params');
+        $pHelper = Mage::helper('welight_gateway/params');
 
         $info->setAdditionalInformation('sender_hash', $pHelper->getPaymentHash('sender_hash'))
             ->setAdditionalInformation('credit_card_token', $pHelper->getPaymentHash('credit_card_token'))
@@ -122,7 +122,7 @@ class Welight_Gateway_Model_Payment_Cc extends Welight_Gateway_Model_Abstract
         $helper = Mage::helper('Welight_Gateway');
 
         /** @var Welight_Gateway_Helper_Params $pHelper */
-        $pHelper = Mage::helper('Welight_Gateway/params');
+        $pHelper = Mage::helper('welight_gateway/params');
 
         $shippingMethod = Mage::getSingleton('checkout/session')->getQuote()->getShippingAddress()->getShippingMethod();
 
@@ -185,7 +185,7 @@ class Welight_Gateway_Model_Payment_Cc extends Welight_Gateway_Model_Abstract
         $order = $payment->getOrder();
 
         //will grab data to be send via POST to API inside $params
-        $params = Mage::helper('Welight_Gateway/internal')->getCreditCardApiCallParams($order, $payment);
+        $params = Mage::helper('welight_gateway/internal')->getCreditCardApiCallParams($order, $payment);
         $rmHelper = Mage::helper('Welight_Gateway');
 
         //call API

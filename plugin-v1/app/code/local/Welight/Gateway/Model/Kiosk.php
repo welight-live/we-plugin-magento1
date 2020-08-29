@@ -10,7 +10,7 @@ class Welight_Gateway_Model_Kiosk extends Mage_Core_Model_Abstract
         $this->_store = Mage::app()->getStore();
         $this->_websiteId = Mage::app()->getWebsite()->getId();
 
-        $this->_init('Welight_Gateway/kiosk');
+        $this->_init('welight_gateway/kiosk');
     }
 
     /**
@@ -87,7 +87,7 @@ class Welight_Gateway_Model_Kiosk extends Mage_Core_Model_Abstract
             ->setWebsiteId($this->_websiteId)
             ->loadByEmail($this->getEmail());
         if (!$customer->getId()) {
-            $pHelper = Mage::helper('Welight_Gateway/params');
+            $pHelper = Mage::helper('welight_gateway/params');
             $name = $pHelper->splitName($notificationXML->sender->name);
 
             /** @var Mage_Customer_Model_Customer $customer */

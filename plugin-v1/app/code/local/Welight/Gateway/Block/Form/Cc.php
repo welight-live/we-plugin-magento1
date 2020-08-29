@@ -17,7 +17,7 @@ class Welight_Gateway_Block_Form_Cc extends Mage_Payment_Block_Form_Cc
     protected function _construct()
     {
         parent::_construct();
-        $this->setTemplate('Welight_Gateway/form/cc.phtml');
+        $this->setTemplate('welight_gateway/form/cc.phtml');
     }
 
     /**
@@ -57,7 +57,7 @@ class Welight_Gateway_Block_Form_Cc extends Mage_Payment_Block_Form_Cc
     {
         $years = $this->getData('cc_years');
         if (null === $years) {
-            $years = Mage::helper('Welight_Gateway/params')->getYears();
+            $years = Mage::helper('welight_gateway/params')->getYears();
             $years = array(0=>$this->__('Year'))+$years;
             $this->setData('cc_years', $years);
         }

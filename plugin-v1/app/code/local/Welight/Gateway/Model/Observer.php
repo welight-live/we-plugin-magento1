@@ -19,7 +19,7 @@ class Welight_Gateway_Model_Observer
         if (in_array($blockType, $welightBlocks)) {
             $output = $observer->getTransport()->getHtml();
             $directpayment = Mage::app()->getLayout()
-                                ->createBlock('Welight_Gateway/form_directpayment')
+                                ->createBlock('welight_gateway/form_directpayment')
                                 ->toHtml();
             $observer->getTransport()->setHtml($directpayment . $output);
         }
@@ -38,7 +38,7 @@ class Welight_Gateway_Model_Observer
             return;
         }
 
-        $helper = Mage::helper('Welight_Gateway/recurring');
+        $helper = Mage::helper('welight_gateway/recurring');
         $profile = $product->getRecurringProfile();
         $welightPeriod = $helper->getwelightPeriod($profile);
 

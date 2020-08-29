@@ -16,7 +16,7 @@ class Welight_Gateway_Model_Source_Customer_Cpf
      */
     public function toOptionArray()
     {
-        $fields = Mage::helper('Welight_Gateway/internal')->getFields('customer');
+        $fields = Mage::helper('welight_gateway/internal')->getFields('customer');
         $options = array();
         $options[] = array('value'=>'','label'=>'Solicitar junto com os outros dados do pagamento');
 
@@ -29,7 +29,7 @@ class Welight_Gateway_Model_Source_Customer_Cpf
             }
         }
 
-        $addressFields = Mage::helper('Welight_Gateway/internal')->getFields('customer_address');
+        $addressFields = Mage::helper('welight_gateway/internal')->getFields('customer_address');
         foreach ($addressFields as $key => $value) {
             if (!is_null($value['frontend_label'])) {
                 $options['address|'.$value['frontend_label']] = array(

@@ -167,12 +167,12 @@
                 <address_street_attribute>street_1</address_street_attribute>
                 <address_number_attribute>street_2</address_number_attribute>
                 <address_neighborhood_attribute>street_2</address_neighborhood_attribute>
-                <ws_url>https://ws.welight.uol.com.br/v2/</ws_url>
-                <ws_url_app>https://ws.Gateway.net.br/pspro/v7/wswelight/v2/</ws_url_app>
-                <js_url>https://stc.welight.uol.com.br/welight/api/v2/checkout/welight.directpayment.js</js_url>
-                <sandbox_ws_url>https://ws.sandbox.welight.uol.com.br/v2/</sandbox_ws_url>
-                <sandbox_ws_url_app>https://ws.Gateway.net.br/pspro/v7/wswelight/v2/</sandbox_ws_url_app>
-                <sandbox_js_url>https://stc.sandbox.welight.uol.com.br/welight/api/v2/checkout/welight.directpayment.js</sandbox_js_url>
+                <ws_url>https://ws.pagseguro.uol.com.br/v2/</ws_url>
+                <ws_url_app>https://ws.ricardomartins.net.br/pspro/v7/wspagseguro/v2/</ws_url_app>
+                <js_url>https://stc.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.directpayment.js</js_url>
+                <sandbox_ws_url>https://ws.sandbox.pagseguro.uol.com.br/v2/</sandbox_ws_url>
+                <sandbox_ws_url_app>https://ws.ricardomartins.net.br/pspro/v7/wspagseguro/v2/</sandbox_ws_url_app>
+                <sandbox_js_url>https://stc.sandbox.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.directpayment.js</sandbox_js_url>
                 <exception_request_validate>onestepcheckout/ajax/savePaymentMethod</exception_request_validate>
                 <jsdelivr_enabled>1</jsdelivr_enabled>
                 <jsdelivr_minify>1</jsdelivr_minify>

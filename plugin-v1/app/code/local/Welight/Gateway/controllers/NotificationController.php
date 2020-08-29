@@ -48,7 +48,7 @@ class Welight_Gateway_NotificationController extends Mage_Core_Controller_Front_
                 'Notificação recebida do welight com os parâmetros:'
                 . var_export($this->getRequest()->getParams(), true)
             );
-        $model =  Mage::getModel('Welight_Gateway/abstract');
+        $model =  Mage::getModel('welight_gateway/abstract');
         $response = $model->getNotificationStatus($notificationCode);
         if (false === $response) {
             Mage::throwException('Falha ao processar retorno XML do welight.');

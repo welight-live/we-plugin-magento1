@@ -24,7 +24,7 @@ class Welight_Gateway_Block_Product_Installments extends Mage_Core_Block_Templat
     protected function _construct()
     {
         parent::_construct();
-        $this->setTemplate('Welight_Gateway/product/installments.phtml');
+        $this->setTemplate('welight_gateway/product/installments.phtml');
     }
 
     /**
@@ -33,7 +33,7 @@ class Welight_Gateway_Block_Product_Installments extends Mage_Core_Block_Templat
      */
     public function isEnabled()
     {
-        if ($this->getNameInLayout() != 'Gateway.welight.parcelas') {
+        if ($this->getNameInLayout() != 'welight.gateway.parcelas') {
             return true;
         }
 
@@ -54,7 +54,7 @@ class Welight_Gateway_Block_Product_Installments extends Mage_Core_Block_Templat
         $head = Mage::app()->getLayout()->getBlock('after_body_start');
 
         if ($head && false == $head->getChild('welight_direct')) {
-            $scriptBlock = Mage::helper('Welight_Gateway')->getExternalwelightScriptBlock();
+            $scriptBlock = Mage::helper('welight_gateway')->getExternalwelightScriptBlock();
             $head->append($scriptBlock);
         }
 

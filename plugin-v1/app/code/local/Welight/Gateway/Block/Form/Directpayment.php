@@ -14,7 +14,7 @@ class Welight_Gateway_Block_Form_Directpayment extends Mage_Core_Block_Template
     protected function _construct()
     {
         parent::_construct();
-        $this->setTemplate('Welight_Gateway/form/directpayment.phtml');
+        $this->setTemplate('welight_gateway/form/directpayment.phtml');
     }
 
     /**

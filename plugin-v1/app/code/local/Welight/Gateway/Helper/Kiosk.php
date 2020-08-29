@@ -15,7 +15,7 @@ class Welight_Gateway_Helper_Kiosk extends Mage_Core_Helper_Abstract
 
     public function getInfo($order_id)
     {
-        return Mage::getModel('Welight_Gateway/kiosk')->loadByOrderId($order_id);
+        return Mage::getModel('welight_gateway/kiosk')->loadByOrderId($order_id);
     }
 
     /**
