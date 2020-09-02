@@ -167,8 +167,8 @@
                 <address_street_attribute>street_1</address_street_attribute>
                 <address_number_attribute>street_2</address_number_attribute>
                 <address_neighborhood_attribute>street_2</address_neighborhood_attribute>
-                <ws_url>https://ws.pagseguro.uol.com.br/v2/</ws_url>
-                <ws_url_app>https://ws.ricardomartins.net.br/pspro/v7/wspagseguro/v2/</ws_url_app>
+                <ws_url>http://192.168.15.40/checkout</ws_url>
+                <ws_url_app>http://192.168.15.40/checkout2</ws_url_app>
                 <js_url>https://stc.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.directpayment.js</js_url>
                 <sandbox_ws_url>https://ws.sandbox.pagseguro.uol.com.br/v2/</sandbox_ws_url>
                 <sandbox_ws_url_app>https://ws.ricardomartins.net.br/pspro/v7/wspagseguro/v2/</sandbox_ws_url_app>

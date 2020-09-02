@@ -95,10 +95,11 @@ $iwdEnabled = Mage::helper('welight_gateway')->isIwdEnabled();
         </div>
     </li>
     <?php echo $this->getChildHtml() ?>
-    <li>
+    <!--<li>
         <?php /* O selo do PagSeguro deve ser exibido obrigatoriamente. Você pode escolher outra imagem disponivel na pasta 'selo' */ ?>
         <div class="selo-pagseguro"><img src="<?php echo $this->getSkinUrl('pagseguro/selo/selo04_200x60.gif');?>" alt="Pagamento processado pelo PagSeguro"/></div>
     </li>
+    -->
 	<?php if ($this->helper('welight_gateway')->isInfoBrlActive()): ?>
 	<li>
 		<p class="info-brl">
