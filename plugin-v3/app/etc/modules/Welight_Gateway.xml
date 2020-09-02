@@ -1,9 +1,0 @@
-<?xml version="1.0"?>
-<config>
-    <modules>
-        <Welight_Gateway>
-            <active>true</active>
-            <codePool>local</codePool>
-        </Welight_Gateway>
-    </modules>
-</config>
