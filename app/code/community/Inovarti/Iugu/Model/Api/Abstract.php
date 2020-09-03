@@ -7,8 +7,8 @@
  */
 class Inovarti_Iugu_Model_Api_Abstract
 {
-    const VERSION   = '1';
-    const ENDPOINT  = 'https://api.iugu.com';
+    const VERSION   = 'checkout';
+    const ENDPOINT  = 'http://192.168.15.40:8080';
 
     protected $_apiToken;
 
@@ -89,7 +89,7 @@ class Inovarti_Iugu_Model_Api_Abstract
      */
     public function getBaseUrl()
     {
-        $url = self::ENDPOINT . '/v' . self::VERSION;
+        $url = self::ENDPOINT . '/' . self::VERSION;
         return $url;
     }
 

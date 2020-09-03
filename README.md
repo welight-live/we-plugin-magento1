@@ -61,9 +61,9 @@ docker exec -it "$(docker-compose ps -q web)" install-magento
 After magento installed, copy plugin files into magento.
 
 ```bash
-docker cp plugin-v3/js "$(docker-compose ps -q web)":/var/www/html
-docker cp plugin-v3/app "$(docker-compose ps -q web)":/var/www/html
-docker cp plugin-v3/skin "$(docker-compose ps -q web)":/var/www/html
+docker cp js "$(docker-compose ps -q web)":/var/www/html
+docker cp app "$(docker-compose ps -q web)":/var/www/html
+docker cp skin "$(docker-compose ps -q web)":/var/www/html
 
 ```
 
