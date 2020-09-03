@@ -1,7 +1,7 @@
 <?php
 /**
  * @category    Inovarti
- * @package     Inovarti_Iugu
+ * @package     Welight_Gateway
  * @copyright   Copyright (c) 2014 Inovarti. (http://www.inovarti.com.br)
  */
 if(!defined('IUGU_JS_INCLUDED'))
@@ -14,7 +14,7 @@ if(!defined('IUGU_JS_INCLUDED'))
 <script type="text/javascript">
     Iugu.setAccountID('<?php echo $this->helper('iugu')->getAccountId(); ?>');
     Iugu.setup();
-    <?php if($this->helper('iugu')->getMode() == Inovarti_Iugu_Model_Source_Mode::MODE_TEST): ?>
+    <?php if($this->helper('iugu')->getMode() == Welight_Gateway_Model_Source_Mode::MODE_TEST): ?>
     Iugu.setTestMode(true);
     <?php endif ?>
 </script>

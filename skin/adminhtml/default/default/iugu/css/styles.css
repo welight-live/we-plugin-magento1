@@ -1,7 +1,7 @@
 /**
  *
  * @category   Inovarti
- * @package    Inovarti_Iugu
+ * @package    Welight_Gateway
  * @author     Suporte <suporte@inovarti.com.br>
  */
 

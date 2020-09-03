@@ -1,6 +1,6 @@
 /**
  * @category    Inovarti
- * @package     Inovarti_Iugu
+ * @package     Welight_Gateway
  * @copyright   Copyright (c) 2014 Inovarti. (http://www.inovarti.com.br)
  */
 

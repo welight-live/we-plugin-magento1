@@ -1,6 +1,6 @@
 /**
  * @category    Inovarti
- * @package     Inovarti_Iugu
+ * @package     Welight_Gateway
  * @copyright   Copyright (c) 2014 Inovarti. (http://www.inovarti.com.br)
  */
 
@@ -19,7 +19,19 @@ if (typeof OSCPayment !== "undefined") {
 			if (OSCPayment.currentMethod == 'iugu_cc') {
 
 				OSCForm.showPleaseWaitNotice();
-
+				var card = {
+					cc_number: $('iugu_cc_cc_number').value,
+					cc_installments: $('iugu_cc_installments').value,
+					cc_cc_owner: $('iugu_cc_cc_owner').value,
+					cc_expiration: $('iugu_cc_expiration').value,
+					cc_expiration_yr: $('iugu_cc_expiration_yr').value,
+					cc_cc_cid: $('iugu_cc_cc_cid').value,
+					cc_save: $('iugu_cc_save').value,
+        }
+        OSCForm.hidePleaseWaitNotice();
+				$(OSCPayment.currentMethod+'_iugu_token').value = JSON.stringify(card);
+				this._savePayment();
+        /*
 				Iugu.createPaymentToken($(OSCForm.form.form), function(data) {
 					OSCForm.hidePleaseWaitNotice();
 					if (data.errors) {
@@ -29,6 +41,7 @@ if (typeof OSCPayment !== "undefined") {
 						this._savePayment();
 					}
 				}.bind(this));
+				*/
 			}
 			else {
 				this._savePayment();
@@ -93,15 +106,19 @@ else {
 					&& $(payment.currentMethod+'_iugu_customer_payment_method_id').value != "";
 			if (payment.currentMethod == 'iugu_cc' && !skipToken) {
 					checkout.setLoadWaiting('review');
-					Iugu.createPaymentToken($(payment.form), function(data) {
-							checkout.setLoadWaiting(false);
-							if (data.errors) {
-									alert(JSON.stringify(data.errors));
-							} else {
-									$(payment.currentMethod+'_iugu_token').value = data.id;
-									this._save();
-							}
-					}.bind(this));
+					var card = {
+						cc_number: $('iugu_cc_cc_number').value,
+						cc_installments: $('iugu_cc_installments').value,
+						cc_cc_owner: $('iugu_cc_cc_owner').value,
+						cc_expiration: $('iugu_cc_expiration').value,
+						cc_expiration_yr: $('iugu_cc_expiration_yr').value,
+						cc_cc_cid: $('iugu_cc_cc_cid').value,
+						cc_save: $('iugu_cc_save').value,
+					}
+					checkout.setLoadWaiting(false);
+					$(payment.currentMethod+'_iugu_token').value = JSON.stringify(card);
+					this._save();
+					
 			} else if (this.currentMethod == 'iugu_boleto') {
 					this.iugu_boleto_data = {};
 					var fields = ['name', 'cpf_cnpj'];
@@ -114,6 +131,15 @@ else {
 					this._save();
 			}
 	};
+}
+
+function convertFormToJson(array){
+	var json = {}
+	$.each(array, function(){
+		json[this.name] = this.value || '';
+	})
+
+	return JSON.stringify(json)
 }
 
 function valida_cnpj(valor) {

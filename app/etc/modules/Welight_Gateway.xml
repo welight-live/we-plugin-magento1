@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!--
+/**
+ *
+ * @category   Inovarti
+ * @package    Welight_Gateway
+ * @author     Suporte <suporte@inovarti.com.br>
+ */
+ -->
+<config>
+    <modules>
+        <Welight_Gateway>
+            <active>true</active>
+            <codePool>community</codePool>
+            <depends>
+                <Mage_Payment />
+            </depends>
+        </Welight_Gateway>
+    </modules>
+</config>
