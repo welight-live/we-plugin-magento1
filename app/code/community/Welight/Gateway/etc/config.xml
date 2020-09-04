@@ -98,7 +98,7 @@
         <layout>
             <updates>
                 <iugu>
-                    <file>iugu.xml</file>
+                    <file>welight.xml</file>
                 </iugu>
             </updates>
         </layout>
@@ -132,7 +132,7 @@
         <layout>
             <updates>
                 <iugu>
-                    <file>iugu.xml</file>
+                    <file>welight.xml</file>
                 </iugu>
             </updates>
         </layout>
