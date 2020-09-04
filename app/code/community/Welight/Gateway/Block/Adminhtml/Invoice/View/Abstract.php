@@ -14,7 +14,7 @@ abstract class Welight_Gateway_Block_Adminhtml_Invoice_View_Abstract extends Mag
     public function __construct()
     {
         parent::__construct();
-        $this->setTemplate('iugu/invoice/view/' . $this->_viewBlockType . '.phtml');
+        $this->setTemplate('welight/invoice/view/' . $this->_viewBlockType . '.phtml');
     }
 
     public function getInvoice()

@@ -13,7 +13,7 @@ class Welight_Gateway_Block_Payment_Method_Form extends Mage_Core_Block_Template
     protected function _construct()
     {
         parent::_construct();
-        $this->setTemplate('iugu/payment_method/form.phtml');
+        $this->setTemplate('welight/payment_method/form.phtml');
     }
 
     public function getTitle()

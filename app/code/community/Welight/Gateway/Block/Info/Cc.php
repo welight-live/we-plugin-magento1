@@ -10,7 +10,7 @@ class Welight_Gateway_Block_Info_Cc extends Mage_Payment_Block_Info
     protected function _construct()
     {
         parent::_construct();
-        $this->setTemplate('iugu/info/cc.phtml');
+        $this->setTemplate('welight/info/cc.phtml');
     }
 
     /**

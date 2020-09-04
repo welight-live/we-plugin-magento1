@@ -10,7 +10,7 @@ class Welight_Gateway_Block_Checkout_Cart_Total extends Mage_Core_Block_Template
     protected function _construct()
     {
         parent::_construct();
-        $this->setTemplate('iugu/checkout/cart/total.phtml');
+        $this->setTemplate('welight/checkout/cart/total.phtml');
     }
 
     public function getAmount()

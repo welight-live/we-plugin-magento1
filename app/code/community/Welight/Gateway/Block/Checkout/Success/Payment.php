@@ -13,7 +13,7 @@ class Welight_Gateway_Block_Checkout_Success_Payment extends Mage_Core_Block_Tem
     protected function _construct()
     {
         parent::_construct();
-        $this->setTemplate('iugu/checkout/success/payment.phtml');
+        $this->setTemplate('welight/checkout/success/payment.phtml');
     }
 
     public function getOrder(){

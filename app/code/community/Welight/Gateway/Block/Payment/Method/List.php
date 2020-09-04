@@ -12,12 +12,12 @@ class Welight_Gateway_Block_Payment_Method_List extends Mage_Core_Block_Template
     protected function _construct()
     {
         parent::_construct();
-        $this->setTemplate('iugu/payment_method/list.phtml');
+        $this->setTemplate('welight/payment_method/list.phtml');
     }
 
     public function getAddPaymentMethodUrl()
     {
-        return $this->getUrl('iugu/payment_method/new');
+        return $this->getUrl('welight/payment_method/new');
     }
 
     public function getBackUrl()

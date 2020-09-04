@@ -22,7 +22,7 @@ class Welight_Gateway_Model_Observer
             $html = $transport->getHtml();
             $preHtml = $block->getLayout()
                 ->createBlock('core/template')
-                ->setTemplate('iugu/checkout/payment/js.phtml')
+                ->setTemplate('welight/checkout/payment/js.phtml')
                 ->toHtml();
             $transport->setHtml($preHtml . $html);
         }
