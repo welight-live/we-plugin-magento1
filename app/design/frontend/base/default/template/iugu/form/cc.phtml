@@ -114,8 +114,8 @@
                 <div class="v-fix iugu-cvv">
                     <input type="text" id="<?php echo $_code ?>_cc_cid" title="<?php echo $this->__('Card Verification Number') ?>" class="input-text iugu-only-number cvv required-entry validate-iugu-cc-cvn" autocomplete="off" data-iugu="verification_value" maxlength="4" value="" />
                     <div class="iugu-cvv-tool-tip">
-                        <img src="<?php echo $this->getSkinUrl('iugu/images/icon_cvv.gif') ?>" class="iugu-cvv-icon" />
-                        <div class="iugu-cvv-image"><img src="<?php echo $this->getSkinUrl('iugu/images/cvv.gif') ?>" alt="<?php echo $this->__('Card Verification Number Visual Reference') ?>" title="<?php echo $this->__('Card Verification Number Visual Reference') ?>" /></div>
+                        <img src="<?php echo $this->getSkinUrl('welight/images/icon_cvv.gif') ?>" class="iugu-cvv-icon" />
+                        <div class="iugu-cvv-image"><img src="<?php echo $this->getSkinUrl('welight/images/cvv.gif') ?>" alt="<?php echo $this->__('Card Verification Number Visual Reference') ?>" title="<?php echo $this->__('Card Verification Number Visual Reference') ?>" /></div>
                         <span class="iugu-cvv-tool-tip-arrow">&nbsp;</span>
                     </div>
                 </div>
@@ -128,7 +128,7 @@
 </ul>
 <script type="text/javascript">
     //<![CDATA[
-    Iugu.setup();
+    //Iugu.setup();
 
     Event.observe($('<?php echo $_code ?>_expiration'), 'change', function(){
         var month = ("0" + this.value).slice(-2);

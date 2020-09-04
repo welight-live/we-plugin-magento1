@@ -13,7 +13,7 @@
     <iugu_checkout_handle>
         <reference name="head">
             <action method="addCss">
-                <stylesheet>iugu/css/styles.css</stylesheet>
+                <stylesheet>welight/css/styles.css</stylesheet>
             </action>
             <action method="addJs">
                 <script>iugu/formatter/formatter.js</script>
@@ -100,7 +100,7 @@
         <update handle="customer_account"/>
         <reference name="head">
             <action method="addCss">
-                <stylesheet>iugu/css/styles.css</stylesheet>
+                <stylesheet>welight/css/styles.css</stylesheet>
             </action>
         </reference>
         <reference name="my.account.wrapper">
@@ -118,7 +118,7 @@
         <update handle="customer_account"/>
         <reference name="head">
             <action method="addCss">
-                <stylesheet>iugu/css/styles.css</stylesheet>
+                <stylesheet>welight/css/styles.css</stylesheet>
             </action>
             <action method="addJs">
                 <script>iugu/prototype/validation.js</script>

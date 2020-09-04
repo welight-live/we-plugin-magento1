@@ -12,10 +12,11 @@ if(!defined('IUGU_JS_INCLUDED'))
 <script type="text/javascript" src="<?php echo $this->getJsUrl('iugu/prototype/validation.js') ?>"></script>
 <script type="text/javascript" src="<?php echo $this->getSkinUrl('iugu/js/checkout.js') ?>"></script>
 <script type="text/javascript">
-    Iugu.setAccountID('<?php echo $this->helper('iugu')->getAccountId(); ?>');
-    Iugu.setup();
+    //alert("IUGU setAccountID")
+    //Iugu.setAccountID('<?php echo $this->helper('iugu')->getAccountId(); ?>');
+    //Iugu.setup();
     <?php if($this->helper('iugu')->getMode() == Welight_Gateway_Model_Source_Mode::MODE_TEST): ?>
-    Iugu.setTestMode(true);
+    //Iugu.setTestMode(true);
     <?php endif ?>
 </script>
 <?php

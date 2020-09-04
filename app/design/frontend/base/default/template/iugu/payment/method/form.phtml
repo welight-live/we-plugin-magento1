@@ -72,8 +72,8 @@
                 <div class="v-fix iugu-cvv">
                     <input type="text" id="<?php echo $_code ?>_cc_cid" title="<?php echo $this->__('Card Verification Number') ?>" class="input-text iugu-only-number cvv required-entry validate-iugu-cc-cvn" autocomplete="off" data-iugu="verification_value" maxlength="4" value="" />
                     <div class="iugu-cvv-tool-tip">
-                        <img src="<?php echo $this->getSkinUrl('iugu/images/icon_cvv.gif') ?>" class="iugu-cvv-icon" />
-                        <div class="iugu-cvv-image"><img src="<?php echo $this->getSkinUrl('iugu/images/cvv.gif') ?>" alt="<?php echo $this->__('Card Verification Number Visual Reference') ?>" title="<?php echo $this->__('Card Verification Number Visual Reference') ?>" /></div>
+                        <img src="<?php echo $this->getSkinUrl('welight/images/icon_cvv.gif') ?>" class="iugu-cvv-icon" />
+                        <div class="iugu-cvv-image"><img src="<?php echo $this->getSkinUrl('welight/images/cvv.gif') ?>" alt="<?php echo $this->__('Card Verification Number Visual Reference') ?>" title="<?php echo $this->__('Card Verification Number Visual Reference') ?>" /></div>
                         <span class="iugu-cvv-tool-tip-arrow">&nbsp;</span>
                     </div>
                 </div>
@@ -88,98 +88,107 @@
 <script type="text/javascript" src="https://js.iugu.com/v2"></script>
 <script type="text/javascript">
     //<![CDATA[
-    Iugu.setAccountID('<?php echo $this->helper('iugu')->getAccountId(); ?>');
-    <?php if($this->helper('iugu')->getMode() == Welight_Gateway_Model_Source_Mode::MODE_TEST): ?>
-    Iugu.setTestMode(true);
-    <?php endif ?>
+        //Iugu.setup();
 
-    var dataForm = new VarienForm('form-payment', true);
-    document.observe("dom:loaded", function() {
-        Event.observe($('form-payment'), 'submit', function(event){
-            if (dataForm.validator.validate()) {
-                Iugu.createPaymentToken(this, function(data) {
-                    if (data.errors) {
-                        alert(JSON.stringify(data.errors));
-                    } else {
-                        $('<?php echo $_code ?>_token').value = data.id;
-                        this.submit();
-                    }
-                }.bind(this));
-            }
-            Event.stop(event);
-        });
+Event.observe($('<?php echo $_code ?>_expiration'), 'change', function(){
+    var month = ("0" + this.value).slice(-2);
+    var year = $(this.id.substr(0,this.id.indexOf('_expiration')) + '_expiration_yr').value;
+    $(this.id.substr(0,this.id.indexOf('_expiration')) + '_cc_expiration').value = month + '/' + year;
+});
 
-        Event.observe($('<?php echo $_code ?>_expiration'), 'change', function () {
-            var month = ("0" + this.value).slice(-2);
-            var year = $(this.id.substr(0, this.id.indexOf('_expiration')) + '_expiration_yr').value;
-            $(this.id.substr(0, this.id.indexOf('_expiration')) + '_cc_expiration').value = month + '/' + year;
-        });
+Event.observe($('<?php echo $_code ?>_expiration_yr'), 'change', function(){
+    var month = ("0" + $(this.id.substr(0,this.id.indexOf('_expiration_yr')) + '_expiration').value).slice(-2);
+    var year = this.value;
+    $(this.id.substr(0,this.id.indexOf('_expiration')) + '_cc_expiration').value = month + '/' + year;
+});
 
-        Event.observe($('<?php echo $_code ?>_expiration_yr'), 'change', function () {
-            var month = ("0" + $(this.id.substr(0, this.id.indexOf('_expiration_yr')) + '_expiration').value).slice(-2);
-            var year = this.value;
-            $(this.id.substr(0, this.id.indexOf('_expiration')) + '_cc_expiration').value = month + '/' + year;
-        });
+Event.observe($('<?php echo $_code ?>_cc_number'), 'change', function(){
+    var skipChange = $(this.id.substr(0,this.id.indexOf('_cc_number')) + '_iugu_customer_payment_method_id')
+        && $(this.id.substr(0,this.id.indexOf('_cc_number')) + '_iugu_customer_payment_method_id').value != "";
+    if (skipChange) {
+        return;
+    }
 
-        Event.observe($('<?php echo $_code ?>_cc_number'), 'change', function () {
-            var typesContainer = $(this.id.substr(0, this.id.indexOf('_cc_number')) + '_types');
-            var ccTypeContainer = $(this.id.substr(0, this.id.indexOf('_cc_number')) + '_cc_type');
-            var ccCidContainer = $(this.id.substr(0, this.id.indexOf('_cc_number')) + '_cc_cid');
-            var ccNumber = this.value;
-            var ccType;
+    var typesContainer = $(this.id.substr(0,this.id.indexOf('_cc_number')) + '_types');
+    var ccTypeContainer = $(this.id.substr(0,this.id.indexOf('_cc_number')) + '_cc_type');
+    var ccCidContainer = $(this.id.substr(0,this.id.indexOf('_cc_number')) + '_cc_cid');
+    var ccNumber = this.value;
+    var ccType;
 
-            if (ccNumber.length >= 6) {
-                Validation.creditCartTypes.each(function (pair) {
-                    if (pair.value[3] && ccNumber.match(pair.value[3])) {
-                        ccType = pair.key;
-                        throw $break;
-                    }
-                });
-            }
-            ccTypeContainer.value = ccType ? ccType : '';
-
-            if (ccNumber) {
-                typesContainer.select('li').invoke('removeClassName', 'on');
-                if (ccType && ccType == ccTypeContainer.value) {
-                    typesContainer.down('.' + ccType).addClassName('on');
-                }
-            } else {
-                typesContainer.select('li').invoke('addClassName', 'on');
-            }
-
-            if (ccCidContainer.value) {
-                Validation.validate(ccCidContainer);
+    if (ccNumber.length >= 6) {
+        Validation.creditCartTypes.each(function (pair) {
+            if (pair.value[3] && ccNumber.match(pair.value[3])) {
+                ccType = pair.key;
+                throw $break;
             }
         });
+    }
+    ccTypeContainer.value = ccType ? ccType : '';
 
-        Event.observe($('<?php echo $_code ?>_cc_number'), 'keyup', function () {
-            fireEvent(this, 'change');
-        });
+    if (ccNumber) {
+        typesContainer.select('li').invoke('removeClassName', 'on');
+        if (ccType && ccType == ccTypeContainer.value) {
+            typesContainer.down('.' + ccType).addClassName('on');
+        }
+    } else {
+        typesContainer.select('li').invoke('addClassName', 'on');
+    }
 
-        // allow only numbers
-        $$('input.iugu-only-number').find(function (input) {
-            Event.observe(input, 'keydown', function (e) {
-                var code = e.keyCode || e.which;
-                var isOnlyNumber = ((code > 47 && code < 58 && e.shiftKey == false)
-                || (code > 95 && code < 106)
-                || (e.ctrlKey || code == 8 || code == 9 || code == 13 || code == 16 || code == 35 || code == 36 || code == 37 || code == 38 || code == 39 || code == 40 || code == 46));
+    if (ccCidContainer.value) {
+        Validation.validate(ccCidContainer);
+    }
+});
 
-                if (!isOnlyNumber) {
-                    e.stop();
-                }
-            });
+Event.observe($('<?php echo $_code ?>_cc_number'), 'keyup', function(){
+    fireEvent(this, 'change');
+});
 
-            Event.observe(input, 'blur', function (e) {
-                this.value = this.value.replace(/[^0-9]/g, '');
-            });
+Event.observe($('<?php echo $_code ?>_cc_number'), 'focus', function() {
+    fireEvent(this, 'keypress');
+});
 
-            // prevent menu from right click
-            Event.observe(input, 'contextmenu', function (e) {
-                e.stop();
-            });
-        });
 
-        fireEvent($('<?php echo $_code ?>_cc_number'), 'change');
+// allow only numbers
+$$('input.iugu-only-number').find(function(input){
+    Event.observe(input, 'keydown', function(e){
+        var code = e.keyCode || e.which;
+        var isOnlyNumber = ((code > 47 && code < 58 && e.shiftKey == false)
+        || (code > 95 && code < 106)
+        || (e.ctrlKey || code == 8 || code == 9 || code == 13 || code == 16 || code == 35 || code == 36 || code == 37 || code == 38 || code == 39 || code == 40 || code == 46));
+
+        if (!isOnlyNumber) {
+            e.stop();
+        }
     });
+
+    Event.observe(input, 'blur', function(e){
+        this.value = this.value.replace(/[^0-9]/g, '');
+    });
+
+    // prevent menu from right click
+    Event.observe(input, 'contextmenu', function(e){
+        e.stop();
+    })
+});
+
+$$('input[name="payment[method]"]').find(function(radio) {
+    Event.observe(radio, 'change', function() {
+        if(radio.value == '<?php echo $_code ?>') {
+            fireEvent($('<?php echo $_code ?>_cc_number'), 'change');
+        } else {
+            $('<?php echo $_code ?>_types').select('li').invoke('addClassName', 'on');
+        }
+    });
+});
+
+// Fill the form
+if (typeof payment !== "undefined" && payment.currentMethod == 'iugu_cc' && payment.iugu_cc_data) {
+    $H(payment.iugu_cc_data).each(function(field){
+        $(payment.currentMethod+'_'+field.key).value = field.value;
+        fireEvent($(payment.currentMethod+'_'+field.key), 'change');
+    });
+}
+
+fireEvent($('<?php echo $_code ?>_cc_number'), 'change');
     //]]>
 </script>

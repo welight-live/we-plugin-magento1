@@ -17,9 +17,9 @@
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
-                    <comment><![CDATA[<a href="http://iugu.com" target="_blank"><img title="Iugu" alt="Iugu" id="logo_iugu_settings" width="80" /></a><br />
+                    <comment><![CDATA[<a href="http://welight.live" target="_blank"><img title="Iugu" alt="Iugu" id="logo_iugu_settings" width="80" /></a><br />
                     <script type="text/javascript">
-                    document.getElementById('logo_iugu_settings').src = SKIN_URL + 'iugu/images/logo.png';
+                    document.getElementById('logo_iugu_settings').src = SKIN_URL + 'welight/images/welight-logo.png';
                     </script>
                     ]]></comment>
                     <fields>
@@ -72,7 +72,7 @@
                     <show_in_store>1</show_in_store>
                     <comment><![CDATA[<a href="http://iugu.com" target="_blank"><img title="Iugu" alt="Iugu" id="logo_iugu_boleto" width="80" /></a><br />
                     <script type="text/javascript">
-                    document.getElementById('logo_iugu_boleto').src = SKIN_URL + 'iugu/images/logo.png';
+                    document.getElementById('logo_iugu_boleto').src = SKIN_URL + 'welight/images/welight-logo.png';
                     </script>
                     ]]></comment>
                     <fields>
@@ -129,7 +129,7 @@
                     <show_in_store>1</show_in_store>
                     <comment><![CDATA[<a href="http://iugu.com" target="_blank"><img title="Iugu" alt="Iugu" id="logo_iugu_cc" width="80" /></a><br />
                     <script type="text/javascript">
-                    document.getElementById('logo_iugu_cc').src = SKIN_URL + 'iugu/images/logo.png';
+                    document.getElementById('logo_iugu_cc').src = SKIN_URL + 'welight/images/welight-logo.png';
                     </script>
                     ]]></comment>
                     <fields>
