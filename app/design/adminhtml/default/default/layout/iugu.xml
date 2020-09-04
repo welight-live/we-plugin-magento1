@@ -16,7 +16,7 @@
             <action method="addItem"><type>js_css</type><name>prototype/windows/themes/default.css</name></action>
             <action method="addCss"><name>lib/prototype/windows/themes/magento.css</name></action>
             <action method="addCss"><name>welight/css/styles.css</name></action>
-            <action method="addJs"><script>iugu/iugu.js</script></action>
+            <action method="addJs"><script>welight/iugu.js</script></action>
         </reference>
     </iugu_info_handle>
 

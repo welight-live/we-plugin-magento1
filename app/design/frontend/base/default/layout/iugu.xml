@@ -16,7 +16,7 @@
                 <stylesheet>welight/css/styles.css</stylesheet>
             </action>
             <action method="addJs">
-                <script>iugu/formatter/formatter.js</script>
+                <script>welight/formatter/formatter.js</script>
             </action>
         </reference>
 				<reference name="before_body_end">
@@ -121,7 +121,7 @@
                 <stylesheet>welight/css/styles.css</stylesheet>
             </action>
             <action method="addJs">
-                <script>iugu/prototype/validation.js</script>
+                <script>welight/prototype/validation.js</script>
             </action>
         </reference>
         <reference name="my.account.wrapper">
