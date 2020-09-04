@@ -7,7 +7,7 @@
  */
 class Welight_Gateway_Model_Api_Abstract
 {
-    const VERSION   = 'checkout';
+    const VERSION   = 'bff/magento1/checkout';
     const ENDPOINT  = 'http://192.168.15.40:8080';
 
     protected $_apiToken;
