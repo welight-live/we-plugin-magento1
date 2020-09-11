@@ -82,7 +82,7 @@
                 <use>standard</use>
                 <args>
                     <module>Welight_Gateway</module>
-                    <frontName>iugu</frontName>
+                    <frontName>welight</frontName>
                 </args>
             </iugu>
         </routers>

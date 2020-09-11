@@ -7,14 +7,16 @@
  */
 class Welight_Gateway_Model_Api_Abstract
 {
-    const VERSION   = 'bff/magento1/checkout';
-    const ENDPOINT  = 'http://192.168.15.40:8080';
+    const VERSION   = 'payments/bff/magento1/checkout';
+    const ENDPOINT  = 'https://ms-payments-gbf5nv7wtq-uc.a.run.app';
+    //const ENDPOINT  = 'http://192.168.15.40:8080';
 
     protected $_apiToken;
 
     public function __construct()
     {
         $this->_apiToken = Mage::helper('iugu')->getApiToken();
+        $this->_mode = Mage::getStoreConfig('payment/iugu_settings/mode');
     }
 
     /**
@@ -64,8 +66,10 @@ class Welight_Gateway_Model_Api_Abstract
         }
         else
         {
-            $data['client_name'] =  'plugin-iugu-magento1';
+            $data['client_name'] =  'plugin-welight-magento1';
             $data['client_version'] = '1.0.1';
+            $data['api-token'] = $this->_apiToken;
+            $data['mode'] = $this->_mode;
             //$data['client_version'] = (string)Mage::getConfig()->getNode('modules/Welight_Gateway/version');
         }
         if (in_array($method, array(Zend_Http_Client::POST, Zend_Http_Client::PUT, Zend_Http_Client::DELETE))) {
